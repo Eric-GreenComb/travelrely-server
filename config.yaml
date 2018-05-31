@@ -1,0 +1,57 @@
+###############################################################################
+#
+#    Service Config section
+#
+###############################################################################
+server:
+  port: 8080,8081,8082,8083
+  mode: debug  # debug;release
+  gorm:
+    LogMode: false # db log
+
+###############################################################################
+#
+#    MariaDb Config section
+#
+###############################################################################
+
+database:
+  dialect: mysql
+  database: ticketchain
+  # database: bookmarker
+  user: root
+  password: yiyun88
+  # 要支持emoji的话，填 utf8mb4
+  charset: utf8mb4
+  # 数据库ip 
+  host: 127.0.0.1
+  # 数据库端口
+  port: 3306
+  # 空闲时最大的连接数
+  maxIdleConns: 5
+  # 最大的连接数
+  maxOpenConns: 10
+
+###############################################################################
+#
+#    Fabric Config section
+#
+###############################################################################
+
+fabric:
+  api:
+    url: http://localhost:4000
+    anchor: peer0.org1.example.com
+    channel: mychannel
+    chaincode: msisdn
+
+###############################################################################
+#
+#    Bussness Config section
+#
+###############################################################################
+
+obj:
+  msisdn:
+    type: travelrely/msisdn
+    version: v1.0
