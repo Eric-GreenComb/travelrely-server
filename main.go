@@ -73,6 +73,10 @@ func main() {
 		r1.GET("/msisdn/history/:msisdn", handler.GetMsisdnHistory)
 		r1.GET("/asset/info/:asset", handler.GetAssetInfo)
 
+		// transfers
+		r1.POST("/transfer/create", handler.CreateTransfer)
+		r1.POST("/transfer/query", handler.QueryTransfer)
+
 		// block
 		r1.GET("/channels/:channel/height", handler.QueryChainHeight)
 	}

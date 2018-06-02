@@ -17,8 +17,7 @@ server:
 
 database:
   dialect: mysql
-  database: ticketchain
-  # database: bookmarker
+  database: travelrely
   user: root
   password: yiyun88
   # 要支持emoji的话，填 utf8mb4

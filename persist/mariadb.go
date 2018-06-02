@@ -3,6 +3,7 @@ package persist
 import (
 	"github.com/jinzhu/gorm"
 
+	"github.com/Eric-GreenComb/travelrely-server/bean"
 	"github.com/Eric-GreenComb/travelrely-server/config"
 )
 
@@ -47,6 +48,11 @@ func InitDatabase() {
 
 	if err != nil {
 		panic(err)
+	}
+
+	if !db.HasTable(&bean.Transfers{}) {
+		db.CreateTable(&bean.Transfers{})
+		db.Set("gorm:table_options", "ENGINE=InnoDB").CreateTable(&bean.Transfers{})
 	}
 
 	return

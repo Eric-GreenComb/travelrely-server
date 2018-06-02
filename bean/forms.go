@@ -32,3 +32,20 @@ type FormUnsubscribe struct {
 	Msisdn    string `form:"msisdn" json:"msisdn"`
 	AssetID   string `form:"asset_id" json:"asset_id"`
 }
+
+// FormTransfer FormTransfer
+type FormTransfer struct {
+	CMD      string `form:"cmd" json:"cmd"`
+	BCUserID string `form:"bcuser_id" json:"bcuser_id"`
+	Msisdn   string `form:"msisdn" json:"msisdn"`
+	AssetID  string `form:"asset_id" json:"asset_id"`
+	Op       int8   `form:"op" json:"op"`
+}
+
+// FormSearchTx FormSearchTx
+type FormSearchTx struct {
+	CMD   string `form:"cmd" json:"cmd"`
+	Tm    int64  `gorm:"default:0" form:"tm" json:"tm"`
+	Start int64  `form:"start" json:"start"`
+	MaxNo int64  `form:"max_no" json:"max_no"`
+}

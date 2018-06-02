@@ -40,6 +40,18 @@ curl http://localhost:8080/api/v1/msisdn/history/13810167616
 
 curl http://localhost:8080/api/v1/asset/info/uuid1234
 
+## transfer
+
+- /transfer/create 插入
+
+curl -H "Content-Type:application/json" -X POST --data '{"cmd":"transt_create","msisdn":"13810167616","bcuser_id":"eric","asset_id":"asset_id","op":0}' http://localhost:8080/api/v1/transfer/create
+
+curl -H "Content-Type:application/json" -X POST --data '{"cmd":"transt_create","msisdn":"13810167616","bcuser_id":"eric","asset_id":"asset_id","op":1}' http://localhost:8080/api/v1/transfer/create
+
+- /transfer/query 查询
+
+curl -H "Content-Type:application/json" -X POST --data '{"cmd":"transt_list","tm":1527916756,"start":0,"max_no":10}' http://localhost:8080/api/v1/transfer/query
+
 ## block
 
 - /channels/:channel/height 高度
