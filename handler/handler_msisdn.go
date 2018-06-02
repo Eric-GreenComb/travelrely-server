@@ -2,12 +2,16 @@ package handler
 
 import (
 	"net/http"
+	"strconv"
 	"strings"
+	"time"
 
 	"github.com/gin-gonic/gin"
 
 	"github.com/Eric-GreenComb/travelrely-server/bean"
 	"github.com/Eric-GreenComb/travelrely-server/blockchain"
+	"github.com/Eric-GreenComb/travelrely-server/config"
+	"github.com/Eric-GreenComb/travelrely-server/persist"
 	"github.com/Eric-GreenComb/travelrely-server/tools"
 )
 
@@ -37,6 +41,31 @@ func SubscribeMsisdn(c *gin.Context) {
 		c.JSON(200, gin.H{"errcode": 1, "msg": "cc_error"})
 		return
 	}
+
+	_height, err := blockchain.GetBCAPI().QueryChainHeight(config.FabricConfig.APIChannel)
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"errcode": 0, "txid": _resp, "asset": _asset})
+		return
+	}
+
+	_iHeight, _ := strconv.ParseInt(_height, 10, 64)
+
+	var _tx bean.Transfers
+
+	_tx.Tm = time.Now().Unix()
+	_tx.Msisdn = _formSubscribe.Msisdn
+	_tx.BcuserID = _formSubscribe.BCUserID
+	_tx.AssetID = _asset
+	_tx.Op = 0
+	_tx.Height = _iHeight
+	_tx.TxID = _resp
+
+	err = persist.GetPersist().CreateTransfer(_tx)
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"errcode": 0, "txid": _resp, "asset": _asset})
+		return
+	}
+
 	c.JSON(http.StatusOK, gin.H{"errcode": 0, "txid": _resp, "asset": _asset})
 }
 
@@ -59,6 +88,31 @@ func UnsubscribeMsisdn(c *gin.Context) {
 		c.JSON(200, gin.H{"errcode": 1, "msg": "cc_error"})
 		return
 	}
+
+	_height, err := blockchain.GetBCAPI().QueryChainHeight(config.FabricConfig.APIChannel)
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"errcode": 0, "txid": _resp})
+		return
+	}
+
+	_iHeight, _ := strconv.ParseInt(_height, 10, 64)
+
+	var _tx bean.Transfers
+
+	_tx.Tm = time.Now().Unix()
+	_tx.Msisdn = _formUnsubscribe.Msisdn
+	_tx.BcuserID = _formUnsubscribe.BCUserID
+	_tx.AssetID = _formUnsubscribe.AssetID
+	_tx.Op = 1
+	_tx.Height = _iHeight
+	_tx.TxID = _resp
+
+	err = persist.GetPersist().CreateTransfer(_tx)
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"errcode": 0, "txid": _resp})
+		return
+	}
+
 	c.JSON(http.StatusOK, gin.H{"errcode": 0, "txid": _resp})
 }
 
