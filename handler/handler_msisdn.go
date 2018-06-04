@@ -2,7 +2,9 @@ package handler
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
+	"net/url"
 	"strconv"
 	"strings"
 	"time"
@@ -120,9 +122,12 @@ func UnsubscribeMsisdn(c *gin.Context) {
 // GetMsisdnState GetMsisdnState
 func GetMsisdnState(c *gin.Context) {
 
-	_msisdn := c.Params.ByName("msisdn")
+	_formMsisdn := bean.FormMsisdn{}
+	c.BindJSON(&_formMsisdn)
 
-	_resp, err := blockchain.GetBCAPI().GetMsisdnState(_msisdn)
+	_encode := url.QueryEscape(_formMsisdn.Msisdn)
+
+	_resp, err := blockchain.GetBCAPI().GetMsisdnState(_encode)
 	if err != nil {
 		c.JSON(200, gin.H{"errcode": 1, "msg": err.Error()})
 	}
@@ -137,9 +142,12 @@ func GetMsisdnState(c *gin.Context) {
 // GetMsisdnHistory GetMsisdnHistory
 func GetMsisdnHistory(c *gin.Context) {
 
-	_msisdn := c.Params.ByName("msisdn")
+	_formMsisdn := bean.FormMsisdn{}
+	c.BindJSON(&_formMsisdn)
 
-	_resp, err := blockchain.GetBCAPI().GetMsisdnHistory(_msisdn)
+	_encode := url.QueryEscape(_formMsisdn.Msisdn)
+
+	_resp, err := blockchain.GetBCAPI().GetMsisdnHistory(_encode)
 	if err != nil {
 		c.JSON(200, gin.H{"errcode": 1, "msg": err.Error()})
 	}
@@ -172,9 +180,13 @@ func GetMsisdnHistory(c *gin.Context) {
 // GetAssetInfo GetAssetInfo
 func GetAssetInfo(c *gin.Context) {
 
-	_asset := c.Params.ByName("asset")
+	_formAsset := bean.FormAsset{}
+	c.BindJSON(&_formAsset)
 
-	_resp, err := blockchain.GetBCAPI().GetAssetInfo(_asset)
+	_encode := url.QueryEscape(_formAsset.AssetID)
+
+	fmt.Println(_encode)
+	_resp, err := blockchain.GetBCAPI().GetAssetInfo(_encode)
 	if err != nil {
 		c.JSON(200, gin.H{"errcode": 1, "msg": err.Error()})
 	}

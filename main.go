@@ -69,9 +69,9 @@ func main() {
 		// msisdn
 		r1.POST("/msisdn/subscribe", handler.SubscribeMsisdn)
 		r1.POST("/msisdn/unsubscribe", handler.UnsubscribeMsisdn)
-		r1.GET("/msisdn/state/:msisdn", handler.GetMsisdnState)
-		r1.GET("/msisdn/history/:msisdn", handler.GetMsisdnHistory)
-		r1.GET("/asset/info/:asset", handler.GetAssetInfo)
+		r1.POST("/msisdn/state", handler.GetMsisdnState)
+		r1.POST("/msisdn/history", handler.GetMsisdnHistory)
+		r1.POST("/asset/info", handler.GetAssetInfo)
 
 		// transfers
 		r1.POST("/transfer/create", handler.CreateTransfer)

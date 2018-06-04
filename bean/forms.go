@@ -33,6 +33,18 @@ type FormUnsubscribe struct {
 	AssetID   string `form:"asset_id" json:"asset_id"`
 }
 
+// FormMsisdn FormMsisdn
+type FormMsisdn struct {
+	CMD    string `form:"cmd" json:"cmd"`
+	Msisdn string `form:"msisdn" json:"msisdn"`
+}
+
+// FormAsset FormAsset
+type FormAsset struct {
+	CMD     string `form:"cmd" json:"cmd"`
+	AssetID string `form:"asset_id" json:"asset_id"`
+}
+
 // FormTransfer FormTransfer
 type FormTransfer struct {
 	CMD      string `form:"cmd" json:"cmd"`
