@@ -35,3 +35,10 @@ type Msisdn struct {
 	UserKey string `json:"user_key,omitempty"`
 	Status  int    `json:"status,omitempty"`
 }
+
+// MsisdnStates MsisdnStates
+type MsisdnStates struct {
+	Msisdn  string `json:"msisdn,omitempty"`
+	AssetID string `json:"asset_id,omitempty"`
+	Status  int    `json:"status,omitempty"`
+}

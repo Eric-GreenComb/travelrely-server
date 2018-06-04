@@ -40,6 +40,11 @@ func (blockChainAPI *BcAPI) GetMsisdnState(msisdn string) (string, error) {
 	return blockChainAPI.GetObj(config.FabricConfig.APIAnchor, "msisdn_state", msisdn, "admin", "Org1")
 }
 
+// GetMsisdnStates GetMsisdnStates
+func (blockChainAPI *BcAPI) GetMsisdnStates(msisdns string) (string, error) {
+	return blockChainAPI.GetObj(config.FabricConfig.APIAnchor, "msisdn_states", msisdns, "admin", "Org1")
+}
+
 // GetMsisdnHistory GetMsisdnHistory
 func (blockChainAPI *BcAPI) GetMsisdnHistory(msisdn string) (string, error) {
 	return blockChainAPI.GetObj(config.FabricConfig.APIAnchor, "get_msisdn_history", msisdn, "admin", "Org1")

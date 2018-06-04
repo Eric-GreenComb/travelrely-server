@@ -35,7 +35,7 @@ Content-Type: application/json
     "bcuser_id":"bcuser_id",
     "bcuser_key":"bcuser_key",
     "msisdn":"+8613810167616",
-    "asset_id":"uuid1234"
+    "asset_id":"0x48f0376DbD53f9B1Ced384A9D4bEddE79d576aF5"
 }
 
 ###api/v1/msisdn/state 查询号码签约信息
@@ -45,6 +45,15 @@ Content-Type: application/json
 {
     "cmd":"msisdn_state",
     "msisdn":"+8613810167616"
+}
+
+###api/v1/msisdn/states 查询多号码签约信息
+POST http://localhost:8080/api/v1/msisdn/states
+Content-Type: application/json
+
+{
+    "cmd":"msisdn_states",
+    "msisdn":["+8613810167616","+8613810167616"]
 }
 
 ###api/v1/msisdn/history 查询号码签约历史信息
@@ -62,7 +71,7 @@ Content-Type: application/json
 
 {
     "cmd":"asset_info",
-    "asset_id":"0x3B544083332D620b715D736AA5aD0B6dd3F250B0"
+    "asset_id":"0x8599770c4eadB13461826fE87ACF4c7dC4Bc8Fc7"
 }
 
 ###/transfer/query 查询

@@ -70,6 +70,7 @@ func main() {
 		r1.POST("/msisdn/subscribe", handler.SubscribeMsisdn)
 		r1.POST("/msisdn/unsubscribe", handler.UnsubscribeMsisdn)
 		r1.POST("/msisdn/state", handler.GetMsisdnState)
+		r1.POST("/msisdn/states", handler.GetMsisdnStates)
 		r1.POST("/msisdn/history", handler.GetMsisdnHistory)
 		r1.POST("/asset/info", handler.GetAssetInfo)
 

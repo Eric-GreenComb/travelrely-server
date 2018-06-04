@@ -11,6 +11,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
+	mystrings "github.com/Eric-GreenComb/contrib/strings"
 	"github.com/Eric-GreenComb/travelrely-server/bean"
 	"github.com/Eric-GreenComb/travelrely-server/blockchain"
 	"github.com/Eric-GreenComb/travelrely-server/config"
@@ -137,6 +138,52 @@ func GetMsisdnState(c *gin.Context) {
 	} else {
 		c.String(http.StatusOK, _resp)
 	}
+}
+
+// GetMsisdnStates GetMsisdnStates
+func GetMsisdnStates(c *gin.Context) {
+
+	_formMsisdns := bean.FormMsisdns{}
+	c.BindJSON(&_formMsisdns)
+
+	var _msisdns string
+	for _, _msisdn := range _formMsisdns.Msisdns {
+		_encode := url.QueryEscape(_msisdn)
+		_msisdns = _msisdns + _encode + ","
+	}
+
+	if len(_msisdns) > 0 {
+		_msisdns = mystrings.Substr(_msisdns, 0, len(_msisdns)-1)
+	}
+
+	_resp, err := blockchain.GetBCAPI().GetMsisdnStates(_msisdns)
+	if err != nil {
+		c.JSON(200, gin.H{"errcode": 1, "msg": err.Error()})
+	}
+
+	if len(_resp) == 0 {
+		c.JSON(200, gin.H{"errcode": 1, "msg": "response is empty"})
+		return
+	}
+
+	var _strings []string
+	err = json.Unmarshal([]byte(_resp), &_strings)
+	if err != nil {
+		c.JSON(200, gin.H{"errcode": 2, "msg": err.Error()})
+	}
+
+	var _msisdnStates []bean.MsisdnStates
+	for _, _string := range _strings {
+		var _msisdnState bean.MsisdnStates
+		err = json.Unmarshal([]byte(_string), &_msisdnState)
+		if err != nil {
+			_msisdnStates = append(_msisdnStates, _msisdnState)
+			continue
+		}
+		_msisdnStates = append(_msisdnStates, _msisdnState)
+	}
+
+	c.JSON(http.StatusOK, _msisdnStates)
 }
 
 // GetMsisdnHistory GetMsisdnHistory

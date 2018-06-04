@@ -39,6 +39,12 @@ type FormMsisdn struct {
 	Msisdn string `form:"msisdn" json:"msisdn"`
 }
 
+// FormMsisdns FormMsisdn
+type FormMsisdns struct {
+	CMD     string   `form:"cmd" json:"cmd"`
+	Msisdns []string `form:"msisdn" json:"msisdn"`
+}
+
 // FormAsset FormAsset
 type FormAsset struct {
 	CMD     string `form:"cmd" json:"cmd"`
