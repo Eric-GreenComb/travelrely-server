@@ -26,19 +26,19 @@ curl -H "Content-Type:application/json" -X POST --data '{"cmd":"subscribe","bcus
 
 - POST api/v1/msisdn/unsubscribe 解约
 
-curl -H "Content-Type:application/json" -X POST --data '{"cmd":"user_unregister","bcuser_id":"bcuser_id","bcuser_key":"bcuser_key","msisdn":"13810167616","asset_id":"uuid1234"}' http://115.28.151.227:8080/api/v1/msisdn/unsubscribe
+curl -H "Content-Type:application/json" -X POST --data '{"cmd":"user_subscribe","bcuser_id":"bcuser_id","bcuser_key":"bcuser_key","msisdn":"13810167616","asset_id":"uuid1234"}' http://115.28.151.227:8080/api/v1/msisdn/unsubscribe
 
 - api/v1/msisdn/state/:msisdn 查询号码签约信息
 
 curl http://115.28.151.227:8080/api/v1/msisdn/state/13810167616
 
-- api/v1/msisdn/history/:msisdn 查询号码签约历史信息
+- api/v1/msisdn/history/:msisdn 查询资产
 
 curl http://115.28.151.227:8080/api/v1/msisdn/history/13810167616
 
-- api/v1/asset/info/:asset 查询号码签约历史信息
+- api/v1/asset/info/:asset 查询资产
 
-curl http://115.28.151.227:8080/api/v1/asset/info/uuid1234
+curl http://115.28.151.227:8080/api/v1/asset/info/0x078aE6D382A1198D7633FcC69cDcc0F02FCFf1cc
 
 ## transfer
 

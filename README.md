@@ -36,7 +36,7 @@ curl http://localhost:8080/api/v1/msisdn/state/13810167616
 
 curl http://localhost:8080/api/v1/msisdn/history/13810167616
 
-- api/v1/asset/info/:asset 查询号码签约历史信息
+- api/v1/asset/info/:asset 查询资产
 
 curl http://localhost:8080/api/v1/asset/info/uuid1234
 
