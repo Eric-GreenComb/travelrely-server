@@ -1,6 +1,6 @@
 # travelrely-server
 
-ticketchain server
+travelrely server
 
 ## health
 

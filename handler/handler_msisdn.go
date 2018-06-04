@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"encoding/json"
 	"net/http"
 	"strconv"
 	"strings"
@@ -145,9 +146,27 @@ func GetMsisdnHistory(c *gin.Context) {
 
 	if len(_resp) == 0 {
 		c.JSON(200, gin.H{"errcode": 1, "msg": "response is empty"})
-	} else {
-		c.String(http.StatusOK, _resp)
+		return
 	}
+
+	var _histories []bean.TxHistory
+	json.Unmarshal([]byte(_resp), &_histories)
+
+	var _historyOuts []bean.TxHistoryOut
+	for _, _history := range _histories {
+		_string := strings.Replace(_history.Value, "\\", "", -1)
+
+		var _historyOut bean.TxHistoryOut
+		_historyOut.TxID = _history.TxID
+		_historyOut.Timestamp = _history.Timestamp
+		_historyOut.IsDelete = _history.IsDelete
+
+		json.Unmarshal([]byte(_string), &_historyOut.Data)
+
+		_historyOuts = append(_historyOuts, _historyOut)
+	}
+
+	c.JSON(http.StatusOK, _historyOuts)
 }
 
 // GetAssetInfo GetAssetInfo

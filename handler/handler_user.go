@@ -26,7 +26,13 @@ func RegisterUser(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"result": 0, "bcuser_id": _key.Address, "bcuser_key": _key.PrivateKey})
+	_pem, err := tools.GenPemPrivateKey(1024)
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"result": 11, "errmsg": "gen pem error"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"result": 0, "bcuser_id": _key.Address, "bcuser_key": _pem})
 }
 
 // UnRegisterUser UnRegisterUser
