@@ -53,7 +53,7 @@ Content-Type: application/json
 
 {
     "cmd":"msisdn_states",
-    "msisdn":["+8613810167616","+8613810167616"]
+    "msisdn":["+8613810167616","+8613810167616","+8613810167617","+8613810167616"]
 }
 
 ###api/v1/msisdn/history 查询号码签约历史信息

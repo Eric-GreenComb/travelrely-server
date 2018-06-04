@@ -22,7 +22,7 @@ POST http://115.28.151.227:8080/api/v1/msisdn/subscribe
     "cmd":"subscribe",
     "bcuser_id":"bcuser_id",
     "bcuser_key":"bcuser_key",
-    "msisdn":"+8613810167616",
+    "msisdn":"+8613810167617",
     "eki2":"eki2"
 }
 
@@ -34,8 +34,8 @@ Content-Type: application/json
     "cmd":"user_unregister",
     "bcuser_id":"bcuser_id",
     "bcuser_key":"bcuser_key",
-    "msisdn":"+8613810167616",
-    "asset_id":"0xa094d4ed29647e7032a5b17Be956618c2887CF1F"
+    "msisdn":"+8613810167617",
+    "asset_id":"0x946Ab07B0FA52A280e50261abD709259892200a8"
 }
 
 ###api/v1/msisdn/state 查询号码签约信息
@@ -53,7 +53,7 @@ Content-Type: application/json
 
 {
     "cmd":"msisdn_states",
-    "msisdn":["+8613810167616","+8613810167616"]
+    "msisdn":["+8613810167616","+8613810167617","+8613810167618"]
 }
 
 ###api/v1/msisdn/history 查询号码签约历史信息
@@ -71,7 +71,7 @@ Content-Type: application/json
 
 {
     "cmd":"asset_info",
-    "asset_id":"0xa094d4ed29647e7032a5b17Be956618c2887CF1F"
+    "asset_id":"0xA8659808686199998358fdcab7D9beb3209d5cc0"
 }
 
 ###/transfer/query 查询

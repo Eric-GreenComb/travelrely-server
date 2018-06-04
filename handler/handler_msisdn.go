@@ -173,10 +173,11 @@ func GetMsisdnStates(c *gin.Context) {
 	}
 
 	var _msisdnStates []bean.MsisdnStates
-	for _, _string := range _strings {
+	for index, _string := range _strings {
 		var _msisdnState bean.MsisdnStates
 		err = json.Unmarshal([]byte(_string), &_msisdnState)
 		if err != nil {
+			_msisdnState.Msisdn = _formMsisdns.Msisdns[index]
 			_msisdnStates = append(_msisdnStates, _msisdnState)
 			continue
 		}
