@@ -40,7 +40,7 @@ database:
 fabric:
   api:
     url: http://localhost:4000
-    anchor: peer0.org1.example.com
+    anchor: peer0.org1.travelrely.com
     channel: mychannel
     chaincode: msisdn
 

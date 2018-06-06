@@ -9,7 +9,6 @@ func (blockChainAPI *BcAPI) CreateObjByID(ID, base64 string) (string, error) {
 
 	var _peers []string
 	_peers = append(_peers, "localhost:7051")
-	_peers = append(_peers, "localhost:8051")
 
 	var _args []string
 	_args = append(_args, ID)
@@ -23,7 +22,6 @@ func (blockChainAPI *BcAPI) UpdateObjByID(ID, base64 string) (string, error) {
 
 	var _peers []string
 	_peers = append(_peers, "localhost:7051")
-	_peers = append(_peers, "localhost:8051")
 
 	var _args []string
 	_args = append(_args, ID)
