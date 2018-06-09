@@ -25,6 +25,11 @@ func SubscribeMsisdn(c *gin.Context) {
 	_formSubscribe := bean.FormSubscribe{}
 	c.BindJSON(&_formSubscribe)
 
+	fmt.Println("===== SubscribeMsisdn =====")
+	fmt.Println(time.Now())
+	fmt.Println(_formSubscribe)
+	fmt.Println("===== SubscribeMsisdn end =====")
+
 	_key, err := tools.Ks.NewKey()
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{"errcode": 11, "msg": err.Error()})
@@ -42,7 +47,7 @@ func SubscribeMsisdn(c *gin.Context) {
 		return
 	}
 	if strings.Contains(_resp, "cc_error") {
-		c.JSON(200, gin.H{"errcode": 1, "msg": "cc_error"})
+		c.JSON(200, gin.H{"errcode": 1, "msg": _resp})
 		return
 	}
 
@@ -79,6 +84,11 @@ func UnsubscribeMsisdn(c *gin.Context) {
 	_formUnsubscribe := bean.FormUnsubscribe{}
 	c.BindJSON(&_formUnsubscribe)
 
+	fmt.Println("===== SubscribeMsisdn =====")
+	fmt.Println(time.Now())
+	fmt.Println(_formUnsubscribe)
+	fmt.Println("===== SubscribeMsisdn end =====")
+
 	_resp, err := blockchain.GetBCAPI().UnsubscribeMsisdn(_formUnsubscribe.Msisdn, _formUnsubscribe.AssetID, _formUnsubscribe.BCUserID, _formUnsubscribe.BCUserKey)
 	if err != nil {
 		c.JSON(200, gin.H{"errcode": 1, "msg": err.Error()})
@@ -89,7 +99,7 @@ func UnsubscribeMsisdn(c *gin.Context) {
 		return
 	}
 	if strings.Contains(_resp, "cc_error") {
-		c.JSON(200, gin.H{"errcode": 1, "msg": "cc_error"})
+		c.JSON(200, gin.H{"errcode": 1, "msg": _resp})
 		return
 	}
 

@@ -1,13 +1,13 @@
 ###health
-GET http://115.28.151.227:8080/health
+GET http://118.190.166.136:8080/health
 
 ###用户注册
-POST http://115.28.151.227:8080/api/v1/user/register
+POST http://118.190.166.136:8080/api/v1/user/register
 
 {"cmd":"user_register","userID":"eric"}
 
 ###注销用户
-POST http://115.28.151.227:8080/api/v1/user/unregister
+POST http://118.190.166.136:8080/api/v1/user/unregister
 
 {
     "cmd":"user_unregister",
@@ -16,7 +16,7 @@ POST http://115.28.151.227:8080/api/v1/user/unregister
 }
 
 ###api/v1/msisdn/subscribe 签约
-POST http://115.28.151.227:8080/api/v1/msisdn/subscribe
+POST http://118.190.166.136:8080/api/v1/msisdn/subscribe
 
 {
     "cmd":"subscribe",
@@ -27,7 +27,7 @@ POST http://115.28.151.227:8080/api/v1/msisdn/subscribe
 }
 
 ###解约
-POST http://115.28.151.227:8080/api/v1/msisdn/unsubscribe
+POST http://118.190.166.136:8080/api/v1/msisdn/unsubscribe
 Content-Type: application/json
 
 {
@@ -35,20 +35,20 @@ Content-Type: application/json
     "bcuser_id":"bcuser_id",
     "bcuser_key":"bcuser_key",
     "msisdn":"+8613810167617",
-    "asset_id":"0x946Ab07B0FA52A280e50261abD709259892200a8"
+    "asset_id":"0x0cd88Cf566e1A9a8569f5c1559c64BCc12ca2778"
 }
 
 ###api/v1/msisdn/state 查询号码签约信息
-POST http://115.28.151.227:8080/api/v1/msisdn/state
+POST http://118.190.166.136:8080/api/v1/msisdn/state
 Content-Type: application/json
 
 {
     "cmd":"msisdn_state",
-    "msisdn":"+8613810167616"
+    "msisdn":"+8613810167617"
 }
 
 ###api/v1/msisdn/states 查询多号码签约信息
-POST http://115.28.151.227:8080/api/v1/msisdn/states
+POST http://118.190.166.136:8080/api/v1/msisdn/states
 Content-Type: application/json
 
 {
@@ -57,25 +57,25 @@ Content-Type: application/json
 }
 
 ###api/v1/msisdn/history 查询号码签约历史信息
-POST http://115.28.151.227:8080/api/v1/msisdn/history
+POST http://118.190.166.136:8080/api/v1/msisdn/history
 Content-Type: application/json
 
 {
     "cmd":"msisdn_history",
-    "msisdn":"+8613810167616"
+    "msisdn":"+8613810167617"
 }
 
 ###api/v1/asset/info 查询资产信息
-POST http://115.28.151.227:8080/api/v1/asset/info
+POST http://118.190.166.136:8080/api/v1/asset/info
 Content-Type: application/json
 
 {
     "cmd":"asset_info",
-    "asset_id":"0xA8659808686199998358fdcab7D9beb3209d5cc0"
+    "asset_id":"0x0cd88Cf566e1A9a8569f5c1559c64BCc12ca2778"
 }
 
 ###/transfer/query 查询
-POST http://115.28.151.227:8080/api/v1/transfer/query
+POST http://118.190.166.136:8080/api/v1/transfer/query
 Content-Type: application/json
 
 {
@@ -86,4 +86,4 @@ Content-Type: application/json
 }
 
 ###/channels/:channel/height 高度
-GET http://115.28.151.227:8080/api/v1/channels/mychannel/height
+GET http://118.190.166.136:8080/api/v1/channels/mychannel/height
